@@ -11,6 +11,8 @@
 		4333C5931D96870D000A9C0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4333C5921D96870D000A9C0B /* ViewController.swift */; };
 		4333C5951D96870D000A9C0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4333C5941D96870D000A9C0B /* Assets.xcassets */; };
 		4333C5981D96870D000A9C0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4333C5961D96870D000A9C0B /* Main.storyboard */; };
+		4333C5A11D96B3D2000A9C0B /* Fretview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4333C5A01D96B3D2000A9C0B /* Fretview.swift */; };
+		4333C5A31D96B3F1000A9C0B /* Fretview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4333C5A21D96B3F1000A9C0B /* Fretview.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		4333C5941D96870D000A9C0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4333C5971D96870D000A9C0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4333C5991D96870D000A9C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4333C5A01D96B3D2000A9C0B /* Fretview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fretview.swift; sourceTree = "<group>"; };
+		4333C5A21D96B3F1000A9C0B /* Fretview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Fretview.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		4333C58F1D96870D000A9C0B /* Guitar Fretboard Scale Generator */ = {
 			isa = PBXGroup;
 			children = (
+				4333C59F1D96B385000A9C0B /* View */,
 				4333C5901D96870D000A9C0B /* AppDelegate.swift */,
 				4333C5921D96870D000A9C0B /* ViewController.swift */,
 				4333C5941D96870D000A9C0B /* Assets.xcassets */,
@@ -59,6 +64,15 @@
 				4333C5991D96870D000A9C0B /* Info.plist */,
 			);
 			path = "Guitar Fretboard Scale Generator";
+			sourceTree = "<group>";
+		};
+		4333C59F1D96B385000A9C0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4333C5A01D96B3D2000A9C0B /* Fretview.swift */,
+				4333C5A21D96B3F1000A9C0B /* Fretview.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,6 +135,7 @@
 			files = (
 				4333C5951D96870D000A9C0B /* Assets.xcassets in Resources */,
 				4333C5981D96870D000A9C0B /* Main.storyboard in Resources */,
+				4333C5A31D96B3F1000A9C0B /* Fretview.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4333C5931D96870D000A9C0B /* ViewController.swift in Sources */,
+				4333C5A11D96B3D2000A9C0B /* Fretview.swift in Sources */,
 				4333C5911D96870D000A9C0B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +255,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Guitar Fretboard Scale Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Guitar-Fretboard-Scale-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -251,6 +268,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Guitar Fretboard Scale Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Guitar-Fretboard-Scale-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

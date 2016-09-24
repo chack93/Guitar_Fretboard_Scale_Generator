@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,20 +643,21 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="900" height="320"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="900" height="320"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -662,20 +665,132 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="137" y="250"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="680" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-aM-EWj">
+                                <rect key="frame" x="-3" y="230" width="686" height="42"/>
+                                <view key="contentView" id="dod-Y6-5MN">
+                                    <rect key="frame" x="1" y="2" width="684" height="38"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51D-Ry-u91" userLabel="Key Label">
+                                            <rect key="frame" x="18" y="10" width="59" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="KcT-mm-ydF"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key Note" id="dIo-fA-NiG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8BU-Az-pdU" userLabel="Key Selection">
+                                            <rect key="frame" x="81" y="4" width="47" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="dbs-GJ-qgB"/>
+                                                <constraint firstAttribute="height" constant="21" id="o2M-Yw-bIx"/>
+                                            </constraints>
+                                            <popUpButtonCell key="cell" type="push" title="A" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ddq-Kf-azZ" id="SNC-Ah-4r9">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="9Qx-ac-MmI">
+                                                    <items>
+                                                        <menuItem title="A" state="on" id="Ddq-Kf-azZ"/>
+                                                        <menuItem title="B" id="MpZ-Nz-WUo"/>
+                                                        <menuItem title="C" id="Cfz-c7-9P8"/>
+                                                        <menuItem title="D" id="ddI-cg-o2m"/>
+                                                        <menuItem title="E" id="tBX-ih-f2m"/>
+                                                        <menuItem title="F" id="IuJ-Ct-a2a"/>
+                                                        <menuItem title="G" id="cLs-lx-68f"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zTq-7J-fT7" userLabel="Scale Label">
+                                            <rect key="frame" x="139" y="10" width="38" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale" id="yGy-PV-CQS">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axS-Qt-Cfm" userLabel="Scale Selection">
+                                            <rect key="frame" x="181" y="4" width="129" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="124" id="Dxr-4X-P60"/>
+                                            </constraints>
+                                            <popUpButtonCell key="cell" type="push" title="Ionian (Major)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Uij-Rk-WNB" id="Ss9-ji-9Od">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="eHF-1U-5g8">
+                                                    <items>
+                                                        <menuItem title="Ionian (Major)" state="on" id="Uij-Rk-WNB"/>
+                                                        <menuItem title="Dorian" id="R8p-Xm-xOo"/>
+                                                        <menuItem title="Phygian" id="iFs-u0-5Bm"/>
+                                                        <menuItem title="Lydian" id="v8z-2d-3ft"/>
+                                                        <menuItem title="Mixolydian" id="5o4-4o-gOI"/>
+                                                        <menuItem title="Aeolian (Minor)" id="l7x-gk-MLS"/>
+                                                        <menuItem title="Locrian" id="Wxc-0Q-bRM"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                        </popUpButton>
+                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="90o-If-a8B">
+                                            <rect key="frame" x="131" y="6" width="5" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="1" id="dBp-Og-c9H"/>
+                                                <constraint firstAttribute="height" constant="28" id="oer-rS-IQr"/>
+                                            </constraints>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zTq-7J-fT7" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="17N-02-M50"/>
+                                        <constraint firstItem="51D-Ry-u91" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="8G8-Ye-kxo"/>
+                                        <constraint firstItem="8BU-Az-pdU" firstAttribute="leading" secondItem="51D-Ry-u91" secondAttribute="trailing" constant="8" id="L07-DH-YiH"/>
+                                        <constraint firstItem="90o-If-a8B" firstAttribute="leading" secondItem="8BU-Az-pdU" secondAttribute="trailing" constant="8" id="Mbm-tM-H19"/>
+                                        <constraint firstItem="90o-If-a8B" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="4" id="V2N-xy-uln"/>
+                                        <constraint firstItem="8BU-Az-pdU" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="jK9-Kq-cO5"/>
+                                        <constraint firstItem="axS-Qt-Cfm" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="vVw-af-g25"/>
+                                        <constraint firstItem="axS-Qt-Cfm" firstAttribute="leading" secondItem="zTq-7J-fT7" secondAttribute="trailing" constant="8" id="vo6-d5-D11"/>
+                                        <constraint firstItem="zTq-7J-fT7" firstAttribute="leading" secondItem="90o-If-a8B" secondAttribute="trailing" constant="7" id="xPG-fj-lQd"/>
+                                        <constraint firstItem="51D-Ry-u91" firstAttribute="leading" secondItem="dod-Y6-5MN" secondAttribute="leading" constant="20" id="zVB-1D-dWe"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="ROb-AA-9kc"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bn4-9f-QlD" customClass="Fretview" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="664" height="218"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bn4-9f-QlD" secondAttribute="bottom" constant="8" id="BK4-ZZ-c8x"/>
+                            <constraint firstItem="Yzu-aM-EWj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Hws-4F-Sin"/>
+                            <constraint firstItem="bn4-9f-QlD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="NOd-GL-cWy"/>
+                            <constraint firstItem="Yzu-aM-EWj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="OUe-iJ-h4w"/>
+                            <constraint firstAttribute="trailing" secondItem="Yzu-aM-EWj" secondAttribute="trailing" id="T9M-Eu-SuO"/>
+                            <constraint firstItem="bn4-9f-QlD" firstAttribute="top" secondItem="Yzu-aM-EWj" secondAttribute="bottom" constant="8" id="h62-Ed-89y"/>
+                            <constraint firstAttribute="trailing" secondItem="bn4-9f-QlD" secondAttribute="trailing" constant="8" id="nNN-cM-pZ5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="175" y="655"/>
         </scene>
     </scenes>
 </document>
