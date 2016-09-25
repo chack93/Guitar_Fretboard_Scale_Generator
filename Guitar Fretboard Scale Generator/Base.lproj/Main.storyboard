@@ -682,7 +682,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51D-Ry-u91" userLabel="Key Label">
-                                            <rect key="frame" x="18" y="10" width="59" height="17"/>
+                                            <rect key="frame" x="18" y="12" width="59" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="55" id="KcT-mm-ydF"/>
                                             </constraints>
@@ -693,17 +693,17 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8BU-Az-pdU" userLabel="Key Selection">
-                                            <rect key="frame" x="81" y="4" width="47" height="26"/>
+                                            <rect key="frame" x="81" y="6" width="47" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="dbs-GJ-qgB"/>
                                                 <constraint firstAttribute="height" constant="21" id="o2M-Yw-bIx"/>
                                             </constraints>
-                                            <popUpButtonCell key="cell" type="push" title="A" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ddq-Kf-azZ" id="SNC-Ah-4r9">
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="SNC-Ah-4r9">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="9Qx-ac-MmI">
                                                     <items>
-                                                        <menuItem title="A" state="on" id="Ddq-Kf-azZ"/>
+                                                        <menuItem title="A" id="Ddq-Kf-azZ"/>
                                                         <menuItem title="B" id="MpZ-Nz-WUo"/>
                                                         <menuItem title="C" id="Cfz-c7-9P8"/>
                                                         <menuItem title="D" id="ddI-cg-o2m"/>
@@ -713,9 +713,22 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="changeKey:" target="XfG-lQ-9wD" id="PEh-EK-A9U"/>
+                                            </connections>
                                         </popUpButton>
+                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="90o-If-a8B">
+                                            <rect key="frame" x="131" y="8" width="5" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="1" id="dBp-Og-c9H"/>
+                                                <constraint firstAttribute="height" constant="28" id="oer-rS-IQr"/>
+                                            </constraints>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zTq-7J-fT7" userLabel="Scale Label">
-                                            <rect key="frame" x="139" y="10" width="38" height="17"/>
+                                            <rect key="frame" x="139" y="12" width="38" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale" id="yGy-PV-CQS">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -723,7 +736,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axS-Qt-Cfm" userLabel="Scale Selection">
-                                            <rect key="frame" x="181" y="4" width="129" height="26"/>
+                                            <rect key="frame" x="181" y="6" width="129" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="124" id="Dxr-4X-P60"/>
                                             </constraints>
@@ -742,23 +755,16 @@
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
+                                            <connections>
+                                                <action selector="changeScale:" target="XfG-lQ-9wD" id="siU-Si-HmJ"/>
+                                            </connections>
                                         </popUpButton>
-                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="90o-If-a8B">
-                                            <rect key="frame" x="131" y="6" width="5" height="28"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="1" id="dBp-Og-c9H"/>
-                                                <constraint firstAttribute="height" constant="28" id="oer-rS-IQr"/>
-                                            </constraints>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
-                                        </box>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zTq-7J-fT7" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="17N-02-M50"/>
+                                        <constraint firstItem="90o-If-a8B" firstAttribute="leading" secondItem="8BU-Az-pdU" secondAttribute="trailing" constant="8" id="3jh-ta-wVa"/>
                                         <constraint firstItem="51D-Ry-u91" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="8G8-Ye-kxo"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="leading" secondItem="51D-Ry-u91" secondAttribute="trailing" constant="8" id="L07-DH-YiH"/>
-                                        <constraint firstItem="90o-If-a8B" firstAttribute="leading" secondItem="8BU-Az-pdU" secondAttribute="trailing" constant="8" id="Mbm-tM-H19"/>
                                         <constraint firstItem="90o-If-a8B" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="4" id="V2N-xy-uln"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="jK9-Kq-cO5"/>
                                         <constraint firstItem="axS-Qt-Cfm" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="vVw-af-g25"/>
@@ -773,7 +779,7 @@
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bn4-9f-QlD" customClass="Fretview" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bn4-9f-QlD" customClass="Fretboardview" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="664" height="218"/>
                             </customView>
                         </subviews>
@@ -782,15 +788,20 @@
                             <constraint firstItem="Yzu-aM-EWj" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Hws-4F-Sin"/>
                             <constraint firstItem="bn4-9f-QlD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="NOd-GL-cWy"/>
                             <constraint firstItem="Yzu-aM-EWj" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="OUe-iJ-h4w"/>
-                            <constraint firstAttribute="trailing" secondItem="Yzu-aM-EWj" secondAttribute="trailing" id="T9M-Eu-SuO"/>
+                            <constraint firstAttribute="trailing" secondItem="Yzu-aM-EWj" secondAttribute="trailing" id="cRs-7f-Obq"/>
                             <constraint firstItem="bn4-9f-QlD" firstAttribute="top" secondItem="Yzu-aM-EWj" secondAttribute="bottom" constant="8" id="h62-Ed-89y"/>
                             <constraint firstAttribute="trailing" secondItem="bn4-9f-QlD" secondAttribute="trailing" constant="8" id="nNN-cM-pZ5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="fretboardView" destination="bn4-9f-QlD" id="T2J-Cc-vpA"/>
+                        <outlet property="keySelection" destination="8BU-Az-pdU" id="3Gq-sx-556"/>
+                        <outlet property="scaleSelection" destination="axS-Qt-Cfm" id="RfR-FA-IFA"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="655"/>
+            <point key="canvasLocation" x="116" y="705"/>
         </scene>
     </scenes>
 </document>
