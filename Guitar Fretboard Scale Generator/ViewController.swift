@@ -18,46 +18,42 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Create A major scale on startup
+        self.buildScale();
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
     
-    @IBAction func changeKey(sender: NSPopUpButton) {
+    @IBAction func changeKey(_ sender: NSPopUpButton) {
+        self.buildScale();
+    }
+    
+    @IBAction func changeScale(_ sender: NSPopUpButton) {
+        self.buildScale();
+    }
+    
+    func buildScale() {
         let selectedKey = self.keySelection.titleOfSelectedItem!
         let selectedScaleIndex = self.scaleSelection.indexOfSelectedItem
         let majorScale = [2, 2, 1, 2, 2, 2, 1]
-        var selectedScale = [Int](count: majorScale.count, repeatedValue: 0)
+        var selectedScale = [Int](repeating: 0, count: majorScale.count)
         
         for i in 0 ..< majorScale.count {
             let shift = (i + selectedScaleIndex) % majorScale.count
             selectedScale[i] = majorScale[shift]
         }
-        self.createScaleWithKey(selectedKey.capitalizedString, scale: selectedScale)
+        self.createScaleWithKey(selectedKey.capitalized, scale: selectedScale)
     }
     
-    @IBAction func changeScale(sender: NSPopUpButton) {
-        let selectedKey = self.keySelection.titleOfSelectedItem!
-        let selectedScaleIndex = self.scaleSelection.indexOfSelectedItem
-        let majorScale = [2, 2, 1, 2, 2, 2, 1]
-        var selectedScale = [Int](count: majorScale.count, repeatedValue: 0)
-        
-        for i in 0 ..< majorScale.count {
-            let shift = (i + selectedScaleIndex) % majorScale.count
-            selectedScale[i] = majorScale[shift]
-        }
-        self.createScaleWithKey(selectedKey.capitalizedString, scale: selectedScale)
-    }
-    
-    func createScaleWithKey(key: String, scale: [Int]) {
+    func createScaleWithKey(_ key: String, scale: [Int]) {
         let frets = fretboardView.frets
         let notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
-        var notesInScale = [String](count: 7, repeatedValue: "-")
-        var resultScale = Array(count: 6, repeatedValue: [String](count: frets, repeatedValue: "-"))
+        var notesInScale = [String](repeating: "-", count: 7)
+        var resultScale = Array(repeating: [String](repeating: "-", count: frets), count: 6)
         // Start at the 1st fret at each string
         resultScale[0][0] = "F"
         resultScale[1][0] = "A#"
@@ -69,7 +65,7 @@ class ViewController: NSViewController {
         // Add all notes up to 16nd string
         for i in 0..<resultScale.count {
             let firstNote = resultScale[i][0]
-            let firstNoteIndex = notes.indexOf(firstNote)!
+            let firstNoteIndex = notes.index(of: firstNote)!
             
             for j in 0..<resultScale[i].count {
                 let indexOfNote = (firstNoteIndex + j) % notes.count
@@ -78,7 +74,7 @@ class ViewController: NSViewController {
         }
         
         // Get the 7 scale notes
-        var indexFromKeyNote = notes.indexOf(key)!
+        var indexFromKeyNote = notes.index(of: key)!
         for i in 0..<notesInScale.count {
             notesInScale[i] = notes[indexFromKeyNote % notes.count]
             indexFromKeyNote += scale[i]

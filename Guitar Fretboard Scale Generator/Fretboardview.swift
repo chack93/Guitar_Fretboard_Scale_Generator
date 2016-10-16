@@ -21,10 +21,10 @@ struct NoteDot {
         } else {
             self.dotColor = NSColor.init(calibratedRed: 241/255, green: 217/255, blue: 132/255, alpha: 1)
         }
-        self.fontColor = NSColor.blackColor()
+        self.fontColor = NSColor.black
         self.size = size
         self.note = note
-        self.bezierPath = NSBezierPath(ovalInRect: size)
+        self.bezierPath = NSBezierPath(ovalIn: size)
     }
 }
 
@@ -46,10 +46,10 @@ class Fretboardview: NSView {
         }
     }
     
-    private var noteDots = [NoteDot]()
+    fileprivate var noteDots = [NoteDot]()
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         drawFretboard()
         
         drawNotes()
@@ -70,7 +70,7 @@ class Fretboardview: NSView {
         let paddingY = CGFloat(fretWidth)
         let fretboard = NSBezierPath(rect: viewSize.insetBy(dx: nutWidth/4, dy: paddingY).offsetBy(dx: nutWidth/8, dy: 0))
         
-        NSColor.blackColor().set()
+        NSColor.black.set()
         fretboard.stroke()
         fretboardColor.set()
         fretboard.fill()
@@ -107,20 +107,20 @@ class Fretboardview: NSView {
                                      width: dotHeight,
                                      height: dotHeight)
                 let isRootNote = notes[i][j] == rootNote
-                let dot = NoteDot.init(size: dotRect, note: notes[i][j], isRootNote: isRootNote)
+                let dot = NoteDot.init(size: dotRect, note: notes[i][j] as NSString, isRootNote: isRootNote)
                 drawNote(dot)
             }
         }
     }
     
-    func drawNote(note: NoteDot) {
+    func drawNote(_ note: NoteDot) {
         
         note.dotColor.set()
         note.bezierPath.fill()
         
         let charRect = note.size.insetBy(dx: note.size.width * 0.1, dy: note.size.height * 0.1)
         note.fontColor.set()
-        note.note.drawInRect(charRect, withAttributes: nil)
+        note.note.draw(in: charRect, withAttributes: nil)
     }
     
 }
