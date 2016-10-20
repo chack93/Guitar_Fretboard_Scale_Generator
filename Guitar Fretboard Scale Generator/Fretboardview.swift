@@ -32,6 +32,9 @@ struct NoteDot {
 class Fretboardview: NSView {
     /// Frets to be drawn
     let frets = 16
+    private var nutWidth:CGFloat = 0.0;
+    private var fretWidth:CGFloat = 0.0;
+    private var strokeWidth:CGFloat = 0.0;
     
     /// Root note will be drawn red
     var rootNote = "A"
@@ -56,33 +59,39 @@ class Fretboardview: NSView {
     }
     
     func drawFretboard() {
+        self.strokeWidth = 1.0;
         let fretboardColor = NSColor(calibratedRed: 174/255, green: 134/255, blue: 108/255, alpha: 1)
         let fretColor = NSColor(calibratedRed: 107/255, green: 117/255, blue: 138/255, alpha: 1)
         let viewSize = self.bounds
         
-        let nutWidth = viewSize.width * 0.02
+        // Nut
+        self.nutWidth = viewSize.width * 0.02
         let nutRect = NSRect(x: 0, y: 0, width: nutWidth, height: viewSize.height)
-        let nut = NSBezierPath(roundedRect: nutRect, xRadius: nutWidth/2, yRadius: nutWidth/2)
+        let nutPath = NSBezierPath(roundedRect: nutRect, xRadius: nutWidth/2, yRadius: nutWidth/2)
         
-        let fretWidth = viewSize.width * 0.012
+        // Frets
+        self.fretWidth = viewSize.width * 0.012
         let fretRect = NSRect(x: 0, y: 0, width: fretWidth, height: viewSize.height)
         
-        let paddingY = CGFloat(fretWidth)
-        let fretboard = NSBezierPath(rect: viewSize.insetBy(dx: nutWidth/4, dy: paddingY).offsetBy(dx: nutWidth/8, dy: 0))
+        // Fretboard
+        let fbXPadding:CGFloat = nutWidth / 4 // Place left border in center of the nut
+        let fretboardRect = viewSize.insetBy(dx: fbXPadding, dy: 0).offsetBy(dx: fbXPadding, dy: 0).insetBy(dx: self.strokeWidth, dy: strokeWidth)
+        let fretboardPath = NSBezierPath(rect: fretboardRect)
+        
         
         NSColor.black.set()
-        fretboard.stroke()
+        fretboardPath.lineWidth = strokeWidth
+        fretboardPath.stroke()
         fretboardColor.set()
-        fretboard.fill()
+        fretboardPath.fill()
         
         fretColor.set()
-        nut.fill()
+        nutPath.fill()
         
-        fretColor.set()
         let leftPadding = viewSize.width / CGFloat(self.frets)
         for nFret in 1...self.frets {
             let totalLeftPadding = leftPadding * CGFloat(nFret)
-            let nFretRect = fretRect.offsetBy(dx: totalLeftPadding, dy: 0).insetBy(dx: 0, dy: paddingY/4)
+            let nFretRect = fretRect.offsetBy(dx: totalLeftPadding, dy: 0)
             let fret = NSBezierPath(roundedRect: nFretRect, xRadius: fretWidth/2, yRadius: fretWidth/2)
             
             fret.fill()
@@ -90,9 +99,19 @@ class Fretboardview: NSView {
     }
     
     func drawNotes() {
-        let paddingY = self.bounds.width * 0.012
-        let fretDistance = self.bounds.width / CGFloat(self.frets)
-        let dotHeight = CGFloat((self.bounds.height - paddingY) / 6)
+        let fbWidth = self.bounds.width
+        let fbHeight = self.bounds.height
+        
+        let fretDistance = fbWidth / CGFloat(self.frets)
+        var dotDiameter = (fretDistance - self.fretWidth) * 0.8
+        if ((dotDiameter * (6 / 0.8)) > fbHeight) {
+            dotDiameter = fbHeight / (6 / 0.8) // Limit dot size
+        }
+        
+        let dotPosY = fbHeight / 6
+        let dotPaddingY = (dotPosY - dotDiameter) / 2 // Space between dots
+        let dotPaddingX = fretDistance - dotDiameter // Position dot on edge of a fret
+        
         let allowedNotes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
         
         for i in 0..<self.notes.count {
@@ -101,11 +120,14 @@ class Fretboardview: NSView {
                 if (!allowedNotes.contains(notes[i][j])) {
                     continue
                 }
-                let leftPadding = fretDistance * CGFloat(j)
-                let dotRect = NSRect(x: leftPadding,
-                                     y: dotHeight * CGFloat(i),
-                                     width: dotHeight,
-                                     height: dotHeight)
+                
+                let x = fretDistance * CGFloat(j) + dotPaddingX
+                let y = (dotPosY) * CGFloat(i) + dotPaddingY
+                
+                let dotRect = NSRect(x: x,
+                                     y: y,
+                                     width: dotDiameter,
+                                     height: dotDiameter)
                 let isRootNote = notes[i][j] == rootNote
                 let dot = NoteDot.init(size: dotRect, note: notes[i][j] as NSString, isRootNote: isRootNote)
                 drawNote(dot)
@@ -117,10 +139,25 @@ class Fretboardview: NSView {
         
         note.dotColor.set()
         note.bezierPath.fill()
+        let charWidth = note.size.width / 2
+        let charHeight = note.size.height / 2
+        let font = NSFont.init(name: "Helvetica Neue", size: 13)
+        let color = NSColor.darkGray
+        let shadow = NSShadow.init()
+        shadow.shadowOffset = CGSize.init(width: 1.0, height: 1.0)
+        shadow.shadowColor = NSColor.black
+        shadow.shadowBlurRadius = 1.0
+        let style = NSMutableParagraphStyle.init()
+        style.alignment = NSTextAlignment.center
         
-        let charRect = note.size.insetBy(dx: note.size.width * 0.1, dy: note.size.height * 0.1)
+        
+        let charRect = note.size.insetBy(dx: charWidth / 2, dy: charHeight / 2)
         note.fontColor.set()
-        note.note.draw(in: charRect, withAttributes: nil)
+        note.note.draw(in: charRect, withAttributes: [
+            "NSFontAttributeName": font,
+            "NSForegroundColorAttributeName": color,
+            "NSShadowAttributeName": shadow,
+            "NSParagraphStyleAttributeName": style])
     }
     
 }
