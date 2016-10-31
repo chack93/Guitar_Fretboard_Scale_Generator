@@ -13,11 +13,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var fretboardView: Fretboardview!
     @IBOutlet weak var keySelection: NSPopUpButton!
     @IBOutlet weak var scaleSelection: NSPopUpButton!
-    
+    @IBOutlet weak var intervalNotation: NSPopUpButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Create A major scale on startup
         self.buildScale();
     }
@@ -29,11 +29,15 @@ class ViewController: NSViewController {
     }
     
     @IBAction func changeKey(_ sender: NSPopUpButton) {
-        self.buildScale();
+        self.buildScale()
     }
     
     @IBAction func changeScale(_ sender: NSPopUpButton) {
-        self.buildScale();
+        self.buildScale()
+    }
+    
+    @IBAction func changeIntervalNotation(_ sender: NSPopUpButton) {
+        self.buildScale()
     }
     
     func buildScale() {
@@ -46,14 +50,19 @@ class ViewController: NSViewController {
             let shift = (i + selectedScaleIndex) % majorScale.count
             selectedScale[i] = majorScale[shift]
         }
-        self.createScaleWithKey(selectedKey.capitalized, scale: selectedScale)
+        
+        let notation = self.intervalNotation.titleOfSelectedItem!
+        self.createScaleWithKey(selectedKey.capitalized, scale: selectedScale, notation: notation)
     }
     
-    func createScaleWithKey(_ key: String, scale: [Int]) {
+    func createScaleWithKey(_ key: String, scale: [Int], notation: String) {
         let frets = fretboardView.frets
         let notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
         var notesInScale = [String](repeating: "-", count: 7)
         var resultScale = Array(repeating: [String](repeating: "-", count: frets), count: 6)
+        var lookupTable = [String: String]()
+        var _key = key
+        
         // Start at the 1st fret at each string
         resultScale[0][0] = "F"
         resultScale[1][0] = "A#"
@@ -80,16 +89,46 @@ class ViewController: NSViewController {
             indexFromKeyNote += scale[i]
         }
         
+        // Fill lookuptable if spezified
+        switch notation {
+        case "Notes":
+            break
+        case "Interval":
+            let keyIndex = notesInScale.index(of: key)
+            for i in 0..<notesInScale.count {
+                let idx = (keyIndex! + i) % notesInScale.count // 7 Notes in a scale
+                lookupTable[notesInScale[idx]] = String(i + 1)
+            }
+            _key = "1"
+            break
+        case "Root Note & Interval":
+            let keyIndex = notesInScale.index(of: key)
+            for i in 0..<notesInScale.count {
+                let idx = (keyIndex! + i) % notesInScale.count // 7 Notes in a scale
+                if (notesInScale[idx] != key) { // Jump key note
+                    lookupTable[notesInScale[idx]] = String(i + 1)
+                }
+            }
+            break
+        default:
+            break
+        }
+        
         // Replace all notes that are not whithin the scale notes
+        let lookupTableFilled = lookupTable.count > 0
         for i in 0..<resultScale.count {
             for j in 0..<resultScale[i].count {
                 if (!notesInScale.contains(resultScale[i][j])) {
                     resultScale[i][j] = "-"
+                } else if (lookupTableFilled) {
+                    if let replace = lookupTable[resultScale[i][j]] {
+                        resultScale[i][j] = replace
+                    }
                 }
             }
         }
         
-        fretboardView.rootNote = key
+        fretboardView.rootNote = _key
         fretboardView.notes = resultScale
     }
 }

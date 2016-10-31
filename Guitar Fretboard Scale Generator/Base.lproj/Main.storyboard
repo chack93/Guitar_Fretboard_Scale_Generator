@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -675,10 +676,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="680" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-aM-EWj">
+                            <box borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-aM-EWj">
                                 <rect key="frame" x="-3" y="230" width="686" height="42"/>
                                 <view key="contentView" id="dod-Y6-5MN">
-                                    <rect key="frame" x="1" y="2" width="684" height="38"/>
+                                    <rect key="frame" x="1" y="1" width="684" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51D-Ry-u91" userLabel="Key Label">
@@ -717,15 +718,12 @@
                                                 <action selector="changeKey:" target="XfG-lQ-9wD" id="PEh-EK-A9U"/>
                                             </connections>
                                         </popUpButton>
-                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="90o-If-a8B">
+                                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="90o-If-a8B">
                                             <rect key="frame" x="131" y="8" width="5" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="1" id="dBp-Og-c9H"/>
                                                 <constraint firstAttribute="height" constant="28" id="oer-rS-IQr"/>
                                             </constraints>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zTq-7J-fT7" userLabel="Scale Label">
                                             <rect key="frame" x="139" y="12" width="38" height="17"/>
@@ -759,6 +757,43 @@
                                                 <action selector="changeScale:" target="XfG-lQ-9wD" id="siU-Si-HmJ"/>
                                             </connections>
                                         </popUpButton>
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="74i-WK-p4T">
+                                            <rect key="frame" x="508" y="6" width="159" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="154" id="oko-mc-uJh"/>
+                                            </constraints>
+                                            <popUpButtonCell key="cell" type="push" title="Notes" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CQs-Au-6GV" id="Gmd-1J-BFX">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="yNk-b9-JdI">
+                                                    <items>
+                                                        <menuItem title="Notes" state="on" id="CQs-Au-6GV">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                        <menuItem title="Interval" id="Rqc-c7-xVH">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                        <menuItem title="Root Note &amp; Interval" id="yGW-Zw-5RQ">
+                                                            <attributedString key="attributedTitle"/>
+                                                        </menuItem>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="changeIntervalNotation:" target="XfG-lQ-9wD" id="rf7-tb-4Ck"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-D1-vfF">
+                                            <rect key="frame" x="399" y="11" width="105" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="101" id="zsF-ki-IUS"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Interval Notation" id="nJW-Ug-kg2">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zTq-7J-fT7" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="17N-02-M50"/>
@@ -766,9 +801,13 @@
                                         <constraint firstItem="51D-Ry-u91" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="8G8-Ye-kxo"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="leading" secondItem="51D-Ry-u91" secondAttribute="trailing" constant="8" id="L07-DH-YiH"/>
                                         <constraint firstItem="90o-If-a8B" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="4" id="V2N-xy-uln"/>
+                                        <constraint firstItem="FRQ-D1-vfF" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="12" id="c39-pf-nyP"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="jK9-Kq-cO5"/>
+                                        <constraint firstItem="74i-WK-p4T" firstAttribute="leading" secondItem="FRQ-D1-vfF" secondAttribute="trailing" constant="8" id="pY2-Qk-8yc"/>
+                                        <constraint firstAttribute="trailing" secondItem="74i-WK-p4T" secondAttribute="trailing" constant="20" id="rZs-Rn-3qW"/>
                                         <constraint firstItem="axS-Qt-Cfm" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="vVw-af-g25"/>
                                         <constraint firstItem="axS-Qt-Cfm" firstAttribute="leading" secondItem="zTq-7J-fT7" secondAttribute="trailing" constant="8" id="vo6-d5-D11"/>
+                                        <constraint firstItem="74i-WK-p4T" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="w0k-xX-TSF"/>
                                         <constraint firstItem="zTq-7J-fT7" firstAttribute="leading" secondItem="90o-If-a8B" secondAttribute="trailing" constant="7" id="xPG-fj-lQd"/>
                                         <constraint firstItem="51D-Ry-u91" firstAttribute="leading" secondItem="dod-Y6-5MN" secondAttribute="leading" constant="20" id="zVB-1D-dWe"/>
                                     </constraints>
@@ -776,8 +815,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="ROb-AA-9kc"/>
                                 </constraints>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bn4-9f-QlD" customClass="Fretboardview" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="664" height="218"/>
@@ -795,13 +832,14 @@
                     </view>
                     <connections>
                         <outlet property="fretboardView" destination="bn4-9f-QlD" id="T2J-Cc-vpA"/>
+                        <outlet property="intervalNotation" destination="74i-WK-p4T" id="X0r-5G-4Dv"/>
                         <outlet property="keySelection" destination="8BU-Az-pdU" id="3Gq-sx-556"/>
                         <outlet property="scaleSelection" destination="axS-Qt-Cfm" id="RfR-FA-IFA"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="705"/>
+            <point key="canvasLocation" x="146" y="694"/>
         </scene>
     </scenes>
 </document>

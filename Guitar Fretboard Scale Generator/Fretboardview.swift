@@ -215,12 +215,10 @@ class Fretboardview: NSView {
         let dotPaddingY = (dotMaxHeight - dotDiameter) / 2 + bottomPadding // Space between dots
         let dotPaddingX = fretDistance - dotDiameter // Position dot on edge of a fret
         
-        let allowedNotes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
-        
         for i in 0..<self.notes.count {
             for j in 0..<self.notes[i].count {
                 // Jump over empty notes
-                if (!allowedNotes.contains(notes[i][j])) {
+                if (notes[i][j] == "-" || notes[i][j] == "") {
                     continue
                 }
                 
