@@ -61,7 +61,26 @@ class Fretboardview: NSView {
         }
     }
     
-    fileprivate var noteDots = [NoteDot]()
+    private var noteDots = [NoteDot]()
+    
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    
+    override func print(_ sender: Any?) {
+        let printOperation = NSPrintOperation.init(view: self)
+        let printInfo = NSPrintInfo.init()
+        printInfo.orientation = NSPaperOrientation.landscape
+        printInfo.horizontalPagination = NSPrintingPaginationMode.fitPagination
+        printInfo.verticalPagination = NSPrintingPaginationMode.fitPagination
+        printInfo.leftMargin = 20.0 as CGFloat
+        printInfo.rightMargin = 40.0 as CGFloat
+        printInfo.isHorizontallyCentered = true
+        printInfo.isVerticallyCentered = true
+        
+        printOperation.printInfo = printInfo
+        printOperation.run()
+    }
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

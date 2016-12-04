@@ -131,5 +131,10 @@ class ViewController: NSViewController {
         fretboardView.rootNote = _key
         fretboardView.notes = resultScale
     }
+    
+    @IBAction func print(_ sender: NSButton) {
+        self.fretboardView.print(nil)
+    }
+    
 }
 

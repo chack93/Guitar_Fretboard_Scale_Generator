@@ -673,13 +673,13 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="680" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="888" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-aM-EWj">
-                                <rect key="frame" x="-3" y="230" width="686" height="42"/>
+                                <rect key="frame" x="-3" y="230" width="894" height="42"/>
                                 <view key="contentView" id="dod-Y6-5MN">
-                                    <rect key="frame" x="1" y="1" width="684" height="40"/>
+                                    <rect key="frame" x="1" y="1" width="892" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="51D-Ry-u91" userLabel="Key Label">
@@ -757,8 +757,36 @@
                                                 <action selector="changeScale:" target="XfG-lQ-9wD" id="siU-Si-HmJ"/>
                                             </connections>
                                         </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-D1-vfF">
+                                            <rect key="frame" x="560" y="11" width="105" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="101" id="zsF-ki-IUS"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Interval Notation" id="nJW-Ug-kg2">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="cZs-7B-X3b">
+                                            <rect key="frame" x="842" y="5" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="B7A-Em-vDr"/>
+                                                <constraint firstAttribute="width" constant="30" id="g7g-SC-bIp"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Printer Icon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="S1b-dA-d6s">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="print:" target="XfG-lQ-9wD" id="rz6-zH-3B2"/>
+                                            </connections>
+                                        </button>
+                                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="tzV-g5-dCB">
+                                            <rect key="frame" x="831" y="8" width="5" height="27"/>
+                                        </box>
                                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="74i-WK-p4T">
-                                            <rect key="frame" x="508" y="6" width="159" height="26"/>
+                                            <rect key="frame" x="669" y="6" width="159" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="154" id="oko-mc-uJh"/>
                                             </constraints>
@@ -783,31 +811,26 @@
                                                 <action selector="changeIntervalNotation:" target="XfG-lQ-9wD" id="rf7-tb-4Ck"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-D1-vfF">
-                                            <rect key="frame" x="399" y="11" width="105" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="101" id="zsF-ki-IUS"/>
-                                            </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Interval Notation" id="nJW-Ug-kg2">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="zTq-7J-fT7" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="17N-02-M50"/>
                                         <constraint firstItem="90o-If-a8B" firstAttribute="leading" secondItem="8BU-Az-pdU" secondAttribute="trailing" constant="8" id="3jh-ta-wVa"/>
                                         <constraint firstItem="51D-Ry-u91" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="11" id="8G8-Ye-kxo"/>
+                                        <constraint firstItem="cZs-7B-X3b" firstAttribute="leading" secondItem="tzV-g5-dCB" secondAttribute="trailing" constant="8" id="AwY-qZ-OkF"/>
+                                        <constraint firstItem="cZs-7B-X3b" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="5" id="D2x-qf-xrh"/>
+                                        <constraint firstItem="tzV-g5-dCB" firstAttribute="leading" secondItem="74i-WK-p4T" secondAttribute="trailing" constant="8" id="K8S-y5-csU"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="leading" secondItem="51D-Ry-u91" secondAttribute="trailing" constant="8" id="L07-DH-YiH"/>
+                                        <constraint firstAttribute="bottom" secondItem="tzV-g5-dCB" secondAttribute="bottom" constant="8" id="LBi-5w-SpB"/>
                                         <constraint firstItem="90o-If-a8B" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="4" id="V2N-xy-uln"/>
                                         <constraint firstItem="FRQ-D1-vfF" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="12" id="c39-pf-nyP"/>
+                                        <constraint firstAttribute="trailing" secondItem="cZs-7B-X3b" secondAttribute="trailing" constant="20" id="eao-3e-gya"/>
+                                        <constraint firstItem="tzV-g5-dCB" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="5" id="j4a-DB-poJ"/>
                                         <constraint firstItem="8BU-Az-pdU" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="jK9-Kq-cO5"/>
                                         <constraint firstItem="74i-WK-p4T" firstAttribute="leading" secondItem="FRQ-D1-vfF" secondAttribute="trailing" constant="8" id="pY2-Qk-8yc"/>
-                                        <constraint firstAttribute="trailing" secondItem="74i-WK-p4T" secondAttribute="trailing" constant="20" id="rZs-Rn-3qW"/>
                                         <constraint firstItem="axS-Qt-Cfm" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="vVw-af-g25"/>
                                         <constraint firstItem="axS-Qt-Cfm" firstAttribute="leading" secondItem="zTq-7J-fT7" secondAttribute="trailing" constant="8" id="vo6-d5-D11"/>
                                         <constraint firstItem="74i-WK-p4T" firstAttribute="top" secondItem="dod-Y6-5MN" secondAttribute="top" constant="10" id="w0k-xX-TSF"/>
+                                        <constraint firstItem="74i-WK-p4T" firstAttribute="leading" secondItem="FRQ-D1-vfF" secondAttribute="trailing" constant="8" id="wYU-bz-VFs"/>
                                         <constraint firstItem="zTq-7J-fT7" firstAttribute="leading" secondItem="90o-If-a8B" secondAttribute="trailing" constant="7" id="xPG-fj-lQd"/>
                                         <constraint firstItem="51D-Ry-u91" firstAttribute="leading" secondItem="dod-Y6-5MN" secondAttribute="leading" constant="20" id="zVB-1D-dWe"/>
                                     </constraints>
@@ -817,7 +840,7 @@
                                 </constraints>
                             </box>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="bn4-9f-QlD" customClass="Fretboardview" customModule="Guitar_Fretboard_Scale_Generator" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="664" height="218"/>
+                                <rect key="frame" x="8" y="8" width="872" height="218"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -839,7 +862,10 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="694"/>
+            <point key="canvasLocation" x="250" y="694"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Printer Icon" width="64" height="64"/>
+    </resources>
 </document>
