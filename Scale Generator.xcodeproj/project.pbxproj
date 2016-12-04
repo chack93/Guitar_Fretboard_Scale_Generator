@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4333C58D1D96870D000A9C0B /* Guitar Fretboard Scale Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guitar Fretboard Scale Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4333C58D1D96870D000A9C0B /* Scale Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scale Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4333C5901D96870D000A9C0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4333C5921D96870D000A9C0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4333C5941D96870D000A9C0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		4333C58E1D96870D000A9C0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4333C58D1D96870D000A9C0B /* Guitar Fretboard Scale Generator.app */,
+				4333C58D1D96870D000A9C0B /* Scale Generator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4333C58C1D96870D000A9C0B /* Guitar Fretboard Scale Generator */ = {
+		4333C58C1D96870D000A9C0B /* Scale Generator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4333C59C1D96870D000A9C0B /* Build configuration list for PBXNativeTarget "Guitar Fretboard Scale Generator" */;
+			buildConfigurationList = 4333C59C1D96870D000A9C0B /* Build configuration list for PBXNativeTarget "Scale Generator" */;
 			buildPhases = (
 				4333C5891D96870D000A9C0B /* Sources */,
 				4333C58A1D96870D000A9C0B /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = "Guitar Fretboard Scale Generator";
+			name = "Scale Generator";
 			productName = "Guitar Fretboard Scale Generator";
-			productReference = 4333C58D1D96870D000A9C0B /* Guitar Fretboard Scale Generator.app */;
+			productReference = 4333C58D1D96870D000A9C0B /* Scale Generator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4333C5881D96870D000A9C0B /* Build configuration list for PBXProject "Guitar Fretboard Scale Generator" */;
+			buildConfigurationList = 4333C5881D96870D000A9C0B /* Build configuration list for PBXProject "Scale Generator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4333C58C1D96870D000A9C0B /* Guitar Fretboard Scale Generator */,
+				4333C58C1D96870D000A9C0B /* Scale Generator */,
 			);
 		};
 /* End PBXProject section */
@@ -262,7 +262,7 @@
 				INFOPLIST_FILE = "Guitar Fretboard Scale Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Guitar-Fretboard-Scale-Generator";
+				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Scale-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -276,7 +276,7 @@
 				INFOPLIST_FILE = "Guitar Fretboard Scale Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Guitar-Fretboard-Scale-Generator";
+				PRODUCT_BUNDLE_IDENTIFIER = "CHA.Scale-Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -285,7 +285,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4333C5881D96870D000A9C0B /* Build configuration list for PBXProject "Guitar Fretboard Scale Generator" */ = {
+		4333C5881D96870D000A9C0B /* Build configuration list for PBXProject "Scale Generator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4333C59A1D96870D000A9C0B /* Debug */,
@@ -294,7 +294,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4333C59C1D96870D000A9C0B /* Build configuration list for PBXNativeTarget "Guitar Fretboard Scale Generator" */ = {
+		4333C59C1D96870D000A9C0B /* Build configuration list for PBXNativeTarget "Scale Generator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4333C59D1D96870D000A9C0B /* Debug */,
