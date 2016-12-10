@@ -40,7 +40,7 @@
 		4333C5841D96870D000A9C0B = {
 			isa = PBXGroup;
 			children = (
-				4333C58F1D96870D000A9C0B /* Guitar Fretboard Scale Generator */,
+				4333C58F1D96870D000A9C0B /* Scale Generator */,
 				4333C58E1D96870D000A9C0B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4333C58F1D96870D000A9C0B /* Guitar Fretboard Scale Generator */ = {
+		4333C58F1D96870D000A9C0B /* Scale Generator */ = {
 			isa = PBXGroup;
 			children = (
 				4333C59F1D96B385000A9C0B /* View */,
@@ -63,6 +63,7 @@
 				4333C5941D96870D000A9C0B /* Assets.xcassets */,
 				4333C5991D96870D000A9C0B /* Info.plist */,
 			);
+			name = "Scale Generator";
 			path = "Guitar Fretboard Scale Generator";
 			sourceTree = "<group>";
 		};
